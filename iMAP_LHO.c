@@ -16,8 +16,7 @@ int main (int argc, char *argv[]){
 		 *tmp;
 	char perv, buf[2], buf2[1024], username[100], pass[100], sthap[5], halp[5]=". OK";
 
-	// fd=open("index.html", O_RDWR|O_CREAT, 0666);
-
+	
 	sockfd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP, TCP_NODELAY);
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
@@ -31,25 +30,10 @@ int main (int argc, char *argv[]){
         return (-1);
 	}
 
-	// while ((retval=read(sockfd, buf, sizeof(buf)-1)> 0))
-	// {
-	// 	buf[retval]='\0';
-	// 	printf("%s", buf);
-	// }
 	read(sockfd, buf2, sizeof(buf2));
 	printf("Welcome to iMAP LOH! email downloader application :D\n\n");
 	printf("-------------------------------------------------------\n");
-	// printf("iMAP LOH>> input your username: ");
-	// scanf("%s", username);
-	// strcat(login, username);
-	// printf("iMAP LOH>> input your password: ");
-	// scanf("%s", pass);
-	// strcat(login, " ");
-	// strcat(login, pass);
 	
-	// strcat(login, ntr);
-	// printf("%s", login);
-	//login
 	write(sockfd, login, strlen(login));
 	printf("iMAP LOH>> Loging you in...\n");
 	read(sockfd, buf2, sizeof(buf2));
@@ -57,7 +41,6 @@ int main (int argc, char *argv[]){
 	if(buf2[2]=='O' && buf2[3]=='K')
 		printf("iMAP LOH>> BOOM! You are now loged in\n");
 	
-	//select inbox
 	write(sockfd, select, strlen(select));
 	read(sockfd, buf2, sizeof(buf2));
 	strtok(buf2, "\r\n"); 
